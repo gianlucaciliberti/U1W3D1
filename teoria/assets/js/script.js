@@ -145,3 +145,68 @@ if (author === 'Pink Floyd') {
     console.error('Autore non corrispondente');
 }
 console.log(record);
+
+// SPREAD E REST
+/*const myNameArray = ['Pippo', 'Pluto', 'Paperino'];
+const copyNames=myNameArray
+console.log(myNameArray,copyNames);
+
+copyNames[1]='Paperone'; //in questo modo cambiano entrambi gli array
+console.log(myNameArray,copyNames);*/
+
+const myNameArray = ['Pippo', 'Pluto', 'Paperino'];
+const copyNames = [...myNameArray];
+console.log(myNameArray, copyNames);
+
+copyNames[1] = 'Paperone';
+console.log(myNameArray, copyNames);
+
+const firstNumberArray = [1, 2, 3, 4];
+const secondNumberArray = [5, 6, 7, 8];
+
+const concatArray = [...firstNumberArray, ...secondNumberArray];
+console.log(concatArray);
+
+const firstPerson = {
+    firstName: 'Mario',
+    address: {
+        via: 'Roma',
+        citta: 'Napoli',
+    },
+};
+
+const otherAddress = { ...firstPerson.address }; //Lo spread copia solo il primo livello
+
+const otherPerson = { ...firstPerson };//destrutturazione completa dei nidi dell'oggetto
+
+otherPerson.address = { ...otherAddress };//creiamo due classi destrutturate per modificare solo la copia dell'oggetto interno
+
+otherPerson.address.citta = 'Milano'//Così facendo cambio solo la città dell'oggetto spread
+
+console.log(firstPerson);
+console.log(otherPerson);
+
+const mySum = (...values) => {
+    let mytotal = 0;
+    for (let i = 0; i < values.length; i++) {
+        mytotal += values[i];
+    }
+    return mytotal;
+}
+console.log(`Somma con tre parametri: ${mySum(3, 4, 5)}`);
+console.log(`Somma con due parametri: ${mySum(8, 9)}`);
+console.log(`Somma con quattro parametri: ${mySum(12, 23, 45, 10)}`);
+
+//Metodi array ES6+
+const forEach= document.querySelector('#forEach');
+
+namesArray.forEach((name) =>{
+    forEach.innerHTML += `${name} studente frequentante <br />`;
+});
+console.log(namesArray)
+
+const multiply = firstNumberArray.map((number)=> { 
+    return number * 2;
+});
+console.log(firstNumberArray);
+console.log(multiply); // .map si usa per creare copie separate
