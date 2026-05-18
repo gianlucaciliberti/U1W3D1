@@ -198,15 +198,82 @@ console.log(`Somma con due parametri: ${mySum(8, 9)}`);
 console.log(`Somma con quattro parametri: ${mySum(12, 23, 45, 10)}`);
 
 //Metodi array ES6+
-const forEach= document.querySelector('#forEach');
+const forEach = document.querySelector('#forEach');
 
-namesArray.forEach((name) =>{
+namesArray.forEach((name) => {
     forEach.innerHTML += `${name} studente frequentante <br />`;
 });
 console.log(namesArray)
 
-const multiply = firstNumberArray.map((number)=> { 
+const multiply = firstNumberArray.map((number) => {
     return number * 2;
 });
 console.log(firstNumberArray);
 console.log(multiply); // .map si usa per creare copie separate
+
+const users = [
+    {
+        userName: 'Stefano',
+        age: 25,
+    },
+    {
+        userName: 'Anna',
+        age: 22,
+    },
+    {
+        userName: 'Paolo',
+        age: 28
+    }
+];
+
+console.log(users.includes('Mario'));
+const finded = users.find((user) => user.userName === 'Mario');
+console.log(finded);
+
+const genericNumbers = [
+    2, 5, 17, 23, 45, 12
+]
+const total = genericNumbers.reduce((acc, number) => acc + number, 0);
+console.log(total);
+
+console.log(genericNumbers[3]);
+console.log(genericNumbers.sort());
+console.log(genericNumbers);
+console.log(genericNumbers[3]);
+
+console.log(genericNumbers.reverse());
+const correctedSort = genericNumbers.sort((a, b) => a - b);
+console.log(correctedSort);
+
+const majorAge = [
+    {
+        userName: 'Mario',
+        age: 21,
+    },
+    {
+        userName: 'Toni',
+        age: 25,
+    },
+    {
+        userName: 'Paolo',
+        age: 22,
+    },
+    {
+        userName: 'Luca',
+        age: 2,
+    },
+    {
+        userName: 'Maria',
+        age: 27,
+    },
+    {
+        userName: 'Marina',
+        age: 16,
+    },
+];
+
+const maggiorenni = majorAge
+.filter(user => user.age>=18)
+.map ((user) => user.userName)
+.sort();
+console.log(maggiorenni);
