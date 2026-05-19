@@ -222,7 +222,7 @@ console.log(finded);
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 console.log('--------ESERCIZIO 13a-------')
-const sommaEta = utenti.reduce((acc, n) => acc + n.eta, 0);
+const sommaEta = utenti.reduce((acc, utente) => acc + utente.eta, 0);
 console.log(sommaEta);
 const etaMedia = sommaEta / utenti.length;
 console.log(etaMedia)
@@ -237,13 +237,21 @@ console.log('--------ESERCIZIO 13b-------')
 console.log('--------ESERCIZIO 14a-------')
 const sortedEta = utenti
     .sort((a, b) => a.eta - b.eta)
+    .map ((utente) => utente.nome)
 console.log(sortedEta)
 console.log('--------ESERCIZIO 14b-------')
 const sortedName = utenti
-    .sort((a, b) => a.nome.localeCompare(b.nome))
-    .map(utente => utente.nome)
+    .sort ((a, b) => {
+        if (a.nome < b.nome) return -1;
+        if (a.nome > b.nome) return true;
+    })
+    .map ((utente) =>utente.nome);
 
 console.log(sortedName)
+
+//Modo alternativo
+const sortedName2 = utenti.map((utente) => utente.nome) .sort();
+console.log(sortedName2);
 
 /* ESERCIZIO 15 — Chaining
    Componi una catena di metodi che:
@@ -254,6 +262,7 @@ console.log(sortedName)
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+console.log('---------ESERCIZIO 15---------')
 const chain = utenti
     .filter(utente => utente.attivo === true)
     .map(utente => `${utente.nome} ${utente.cognome}`)
